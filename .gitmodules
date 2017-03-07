@@ -1,0 +1,9 @@
+[submodule "apigrabber"]
+	path = apigrabber
+	url = https://github.com/vainglorygame/apigrabber
+[submodule "processor"]
+	path = processor
+	url = https://github.com/vainglorygame/processor
+[submodule "statscompiler"]
+	path = statscompiler
+	url = https://github.com/vainglorygame/statscompiler

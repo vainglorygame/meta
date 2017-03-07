@@ -1,0 +1,13 @@
+[Unit]
+Description=Vainsocial compiler service
+After=network.target
+
+[Service]
+Type=simple
+User=vainsocial
+ExecStart=/vainsocial/statscompiler/venv/bin/python /vainsocial/statscompiler/api.py
+Restart=on-failure
+EnvironmentFile=/vainsocial/config.env
+
+[Install]
+WantedBy=multi-user.target
