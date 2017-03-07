@@ -7,3 +7,6 @@
 [submodule "statscompiler"]
 	path = statscompiler
 	url = https://github.com/vainglorygame/statscompiler
+[submodule "discordbot"]
+	path = discordbot
+	url = https://github.com/vainglorygame/discordbot
