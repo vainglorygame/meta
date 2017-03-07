@@ -7,7 +7,7 @@ Type=simple
 User=vainsocial
 ExecStart=/vainsocial/processor/venv/bin/python /vainsocial/processor/api.py
 Restart=on-failure
-EnvironmentFile=/vainsocial/config.env
+EnvironmentFile=/vainsocial/systemd/config.env
 
 [Install]
 WantedBy=multi-user.target
