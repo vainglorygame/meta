@@ -10,6 +10,6 @@
 [submodule "discordbot"]
 	path = discordbot
 	url = https://github.com/vainglorygame/discordbot
-[submodule "spider"]
-	path = spider
-	url = https://github.com/vainglorygame/spider
+[submodule "preloader"]
+	path = preloader
+	url = https://github.com/vainglorygame/preloader
