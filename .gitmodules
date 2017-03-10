@@ -22,3 +22,7 @@
 	path = vaindock
 	url = https://github.com/vainglorygame/vaindock
 	branch = develop
+[submodule "vainsocial"]
+	path = vainsocial
+	url = https://github.com/vainglorygame/vainsocial
+	branch = releases/1.0.0
