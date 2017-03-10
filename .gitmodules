@@ -26,3 +26,6 @@
 	path = vainsocial
 	url = https://github.com/vainglorygame/vainsocial
 	branch = releases/1.0.0
+[submodule "vainglorygame.github.io"]
+	path = vainglorygame.github.io
+	url = https://github.com/vainglorygame/vainglorygame.github.io
