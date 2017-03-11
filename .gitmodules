@@ -29,3 +29,6 @@
 [submodule "vainglorygame.github.io"]
 	path = vainglorygame.github.io
 	url = https://github.com/vainglorygame/vainglorygame.github.io
+[submodule "analyzer"]
+	path = analyzer
+	url = https://github.com/vainglorygame/analyzer
