@@ -1,34 +1,27 @@
 [submodule "apigrabber"]
 	path = apigrabber
-	url = https://gitlab.com/vainglorygame/apigrabber
-	branch = releases/1.0.0
+	url = https://gitlab.com/vainglorygame/apigrabber.git
 [submodule "processor"]
 	path = processor
-	url = https://gitlab.com/vainglorygame/processor
-	branch = releases/1.0.0
+	url = https://gitlab.com/vainglorygame/processor.git
 [submodule "compiler"]
 	path = compiler
-	url = https://gitlab.com/vainglorygame/compiler
-	branch = releases/1.0.0
+	url = https://gitlab.com/vainglorygame/compiler.git
 [submodule "discordbot"]
 	path = discordbot
-	url = https://gitlab.com/vainglorygame/discordbot
-	branch = releases/1.0.0
+	url = https://gitlab.com/vainglorygame/discordbot.git
 [submodule "preloader"]
 	path = preloader
-	url = https://gitlab.com/vainglorygame/preloader
-	branch = releases/1.0.0
+	url = https://gitlab.com/vainglorygame/preloader.git
 [submodule "vaindock"]
 	path = vaindock
-	url = https://gitlab.com/vainglorygame/vaindock
-	branch = develop
+	url = https://gitlab.com/vainglorygame/vaindock.git
 [submodule "vainsocial"]
 	path = vainsocial
-	url = https://gitlab.com/vainglorygame/vainsocial
-	branch = releases/1.0.0
+	url = https://gitlab.com/vainglorygame/vainsocial.git
 [submodule "vainglorygame.github.io"]
 	path = vainglorygame.gitlab.io
-	url = https://gitlab.com/vainglorygame/vainglorygame.gitlab.io
+	url = https://gitlab.com/vainglorygame/vainglorygame.gitlab.io.git
 [submodule "analyzer"]
 	path = analyzer
-	url = https://gitlab.com/vainglorygame/analyzer
+	url = https://gitlab.com/vainglorygame/analyzer.git
