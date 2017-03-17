@@ -20,7 +20,7 @@
 	path = vainsocial
 	url = https://gitlab.com/vainglorygame/vainsocial.git
 [submodule "vainglorygame.github.io"]
-	path = vainglorygame.gitlab.io
+	path = vainglorygame.github.io
 	url = https://gitlab.com/vainglorygame/vainglorygame.gitlab.io.git
 [submodule "analyzer"]
 	path = analyzer
