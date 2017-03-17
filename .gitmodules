@@ -26,7 +26,7 @@
 	path = vainsocial
 	url = https://gitlab.com/vainglorygame/vainsocial
 	branch = releases/1.0.0
-[submodule "vainglorygame.gitlab.io"]
+[submodule "vainglorygame.github.io"]
 	path = vainglorygame.gitlab.io
 	url = https://gitlab.com/vainglorygame/vainglorygame.gitlab.io
 [submodule "analyzer"]
