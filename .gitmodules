@@ -25,3 +25,6 @@
 [submodule "analyzer"]
 	path = analyzer
 	url = https://gitlab.com/vainglorygame/analyzer.git
+[submodule "cruncher"]
+	path = cruncher
+	url = https://gitlab.com/vainglorygame/cruncher.git
