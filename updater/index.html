@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Vainsocial backend status</title>
+    </head>
+    <body>
+        <form id="update-form">
+            <input type="text">
+            <input type="submit" value="Update">
+        </form>
+
+        <ul id="updates"></ul>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <script>
+            var socket = io();
+            $("#update-form").submit(function(e) {
+                var name = $("input:first").val();
+                $.get("/api/player/name/" + name).done(function() {
+                    $("#updates").append(
+                        $("<li>")
+                        .text("(found)")
+                        .css("color", "black")
+                    );
+                    /* subscribe to socket notifications */
+                    socket.on(name, function(msg) {
+                        if (msg == "grab_failed")  {
+                            $("#updates").append(
+                                $("<li>")
+                                .text(name + ": no new data")
+                                .css("color", "red")
+                            );
+                        }
+                        if (msg == "process_finished")  {
+                            $("#updates").append(
+                                $("<li>")
+                                .text(name + ": processed")
+                                .css("color", "green")
+                            );
+                        }
+                        if (msg == "compile_finished")  {
+                            $("#updates").append(
+                                $("<li>")
+                                .text(name + ": compiled")
+                                .css("color", "orange")
+                            );
+                        }
+                    });
+                }).fail(function() {
+                    $("#updates").append(
+                        $("<li>")
+                        .text("(not found)")
+                        .css("color", "red")
+                    );
+                });
+                e.preventDefault();
+            });
+        </script>
+    </body>
+</html>
