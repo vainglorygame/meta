@@ -261,9 +261,9 @@
     
 
     <script type="text/javascript">
-        var minions_per_second = {{ sql_val("SELECT SUM(minion_kills)/SUM(match.duration)::FLOAT FROM participant JOIN roster ON participant.roster_api_id=roster.api_id JOIN match ON roster.match_api_id=match.api_id WHERE participant.created_at > NOW() - '1 day'::INTERVAL") }};
+        var minions_per_second = {{ sql_val("SELECT SUM(minion_kills)/(24*60*60)::FLOAT FROM participant WHERE participant.created_at > NOW() - '1 day'::INTERVAL") }};
         var minions = 0;
-        // sum(minions killed) / sum(game lengh s)
+        // sum(minions killed) / (seconds per day)
         setInterval(() => {
             minions += minions_per_second;
             $("#minions-killed-now").text(Math.floor(minions));
