@@ -220,8 +220,9 @@
 
                     <div class="content">
                         <p class="description">
-                            Based on Vainsocial users' data from the past 24 hours that by no means is representative to the whole player base of Vainglory. {{ sql_val("SELECT COUNT(*) FROM match WHERE created_at > NOW() - '1 day'::INTERVAL") }} matches are taken into account for the calculations.
+                            Based on Vainsocial users' data from the past 24 hours that by no means is representative to the whole player base of Vainglory.
                         </p>
+			<!-- {{ sql_val("SELECT COUNT(*) FROM match WHERE created_at > NOW() - '1 day'::INTERVAL") }} matches are taken into account for the calculations. -->
                     </div>
                     <div class="filter"></div>
                 </div>
