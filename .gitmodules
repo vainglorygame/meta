@@ -31,3 +31,6 @@
 [submodule "minionlivesmatter"]
 	path = minionlivesmatter
 	url = https://gitlab.com/vainglorygame/minionlivesmatter.git
+[submodule "updater"]
+	path = updater
+	url = https://gitlab.com/vainglorygame/updater.git
