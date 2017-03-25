@@ -28,3 +28,6 @@
 [submodule "cruncher"]
 	path = cruncher
 	url = https://gitlab.com/vainglorygame/cruncher.git
+[submodule "minionlivesmatter"]
+	path = minionlivesmatter
+	url = https://gitlab.com/vainglorygame/minionlivesmatter.git
