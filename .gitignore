@@ -1,2 +1,3 @@
 supervisord.conf
 *.log
+logs/
