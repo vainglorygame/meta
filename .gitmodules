@@ -1,36 +1,42 @@
 [submodule "apigrabber"]
 	path = apigrabber
 	url = https://gitlab.com/vainglorygame/apigrabber.git
+        branch = releases/2.0.0
 [submodule "processor"]
 	path = processor
 	url = https://gitlab.com/vainglorygame/processor.git
-[submodule "compiler"]
-	path = compiler
-	url = https://gitlab.com/vainglorygame/compiler.git
+        branch = releases/2.0.0
 [submodule "discordbot"]
 	path = discordbot
 	url = https://gitlab.com/vainglorygame/discordbot.git
-[submodule "preloader"]
-	path = preloader
-	url = https://gitlab.com/vainglorygame/preloader.git
+        branch = releases/2.0.0
 [submodule "vaindock"]
 	path = vaindock
 	url = https://gitlab.com/vainglorygame/vaindock.git
+        branch = releases/2.0.0
 [submodule "vainsocial"]
 	path = vainsocial
 	url = https://gitlab.com/vainglorygame/vainsocial.git
+        branch = releases/2.0.0
 [submodule "vainglorygame.github.io"]
 	path = vainglorygame.github.io
 	url = https://gitlab.com/vainglorygame/vainglorygame.github.io.git
 [submodule "analyzer"]
 	path = analyzer
 	url = https://gitlab.com/vainglorygame/analyzer.git
+        branch = releases/2.0.0
 [submodule "cruncher"]
 	path = cruncher
 	url = https://gitlab.com/vainglorygame/cruncher.git
-[submodule "minionlivesmatter"]
-	path = minionlivesmatter
-	url = https://gitlab.com/vainglorygame/minionlivesmatter.git
-[submodule "updater"]
-	path = updater
-	url = https://gitlab.com/vainglorygame/updater.git
+        branch = releases/2.0.0
+[submodule "bridge"]
+	path = bridge
+	url = https://gitlab.com/vainglorygame/bridge.git
+        branch = releases/2.0.0
+[submodule "docs"]
+	path = docs
+	url = https://gitlab.com/vainglorygame/docs.git
+[submodule "orm"]
+	path = orm
+	url = https://gitlab.com/vainglorygame/orm.git
+        branch = releases/2.0.0
