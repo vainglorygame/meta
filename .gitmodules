@@ -40,3 +40,6 @@
 	path = orm
 	url = https://gitlab.com/vainglorygame/orm.git
         branch = release/2.0.0
+[submodule "sampler"]
+	path = sampler
+	url = https://gitlab.com/vainglorygame/sampler.git
