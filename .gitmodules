@@ -43,3 +43,6 @@
 [submodule "sampler"]
 	path = sampler
 	url = https://gitlab.com/vainglorygame/sampler.git
+[submodule "ama-answers"]
+	path = ama-answers
+	url = https://gitlab.com/vainglorygame/ama-answers.git
