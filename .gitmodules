@@ -46,3 +46,6 @@
 [submodule "ama-answers"]
 	path = ama-answers
 	url = https://gitlab.com/vainglorygame/ama-answers.git
+[submodule "status"]
+	path = status
+	url = https://gitlab.com/vainglorygame/status.git
