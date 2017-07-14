@@ -1,51 +1,50 @@
 [submodule "apigrabber"]
 	path = apigrabber
 	url = https://gitlab.com/vainglorygame/apigrabber.git
-        branch = release/2.0.0
+        branch = release/2.14.0
 [submodule "processor"]
 	path = processor
 	url = https://gitlab.com/vainglorygame/processor.git
-        branch = release/2.0.0
-[submodule "discordbot"]
-	path = discordbot
-	url = https://gitlab.com/vainglorygame/discordbot.git
-        branch = release/2.0.0
+        branch = release/2.14.0
 [submodule "vaindock"]
 	path = vaindock
 	url = https://gitlab.com/vainglorygame/vaindock.git
-        branch = release/2.0.0
+        branch = release/2.14.0
 [submodule "vainsocial"]
 	path = vainsocial
 	url = https://gitlab.com/vainglorygame/vainsocial.git
-        branch = release/2.0.0
+        branch = release/2.12.0
 [submodule "vainglorygame.github.io"]
 	path = vainglorygame.github.io
 	url = https://gitlab.com/vainglorygame/vainglorygame.github.io.git
 [submodule "analyzer"]
 	path = analyzer
 	url = https://gitlab.com/vainglorygame/analyzer.git
-        branch = release/2.0.0
+        branch = release/2.14.0
 [submodule "cruncher"]
 	path = cruncher
 	url = https://gitlab.com/vainglorygame/cruncher.git
-        branch = release/2.0.0
+        branch = release/2.14.0
 [submodule "bridge"]
 	path = bridge
 	url = https://gitlab.com/vainglorygame/bridge.git
-        branch = release/2.0.0
+        branch = release/2.14.0
 [submodule "docs"]
 	path = docs
 	url = https://gitlab.com/vainglorygame/docs.git
 [submodule "orm"]
 	path = orm
 	url = https://gitlab.com/vainglorygame/orm.git
-        branch = release/2.0.0
-[submodule "sampler"]
-	path = sampler
-	url = https://gitlab.com/vainglorygame/sampler.git
-[submodule "ama-answers"]
-	path = ama-answers
-	url = https://gitlab.com/vainglorygame/ama-answers.git
+        branch = release/2.14.0
+[submodule "telesucker"]
+	path = telesucker
+	url = https://gitlab.com/vainglorygame/telesucker.git
+        branch = release/2.14.0
+[submodule "shrinker"]
+	path = shrinker
+	url = https://gitlab.com/vainglorygame/shrinker.git
+        branch = release/2.14.0
 [submodule "status"]
 	path = status
 	url = https://gitlab.com/vainglorygame/status.git
+        branch = release/2.14.0
