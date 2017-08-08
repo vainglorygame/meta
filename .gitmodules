@@ -44,6 +44,10 @@
 	path = shrinker
 	url = https://gitlab.com/vainglorygame/shrinker.git
         branch = release/2.14.0
+[submodule "reaper"]
+	path = reaper
+	url = ./reaper
+        branch = release/2.17.0
 [submodule "status"]
 	path = status
 	url = https://gitlab.com/vainglorygame/status.git
