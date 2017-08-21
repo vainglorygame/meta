@@ -46,7 +46,7 @@
         branch = release/2.14.0
 [submodule "reaper"]
 	path = reaper
-	url = ./reaper
+	url = https://gitlab.com/vainglorygame/reaper.git
         branch = release/2.17.0
 [submodule "status"]
 	path = status
