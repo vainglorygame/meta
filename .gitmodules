@@ -1,36 +1,36 @@
 [submodule "apigrabber"]
 	path = apigrabber
-	url = https://gitlab.com/vainglorygame/apigrabber.git
-        branch = release/2.14.0
+	url = https://github.com/vainglorygame/apigrabber
+        branch = master
 [submodule "processor"]
 	path = processor
-	url = https://gitlab.com/vainglorygame/processor.git
-        branch = release/2.14.0
+	url = https://github.com/vainglorygame/processor
+        branch = master
 [submodule "vaindock"]
 	path = vaindock
-	url = https://gitlab.com/vainglorygame/vaindock.git
-        branch = release/2.14.0
+	url = https://github.com/vainglorygame/vaindock
+        branch = master
 [submodule "analyzer"]
 	path = analyzer
-	url = https://gitlab.com/vainglorygame/analyzer.git
-        branch = release/2.14.0
+	url = https://github.com/vainglorygame/analyzer
+        branch = master
 [submodule "cruncher"]
 	path = cruncher
-	url = https://gitlab.com/vainglorygame/cruncher.git
-        branch = release/2.14.0
+	url = https://github.com/vainglorygame/cruncher
+        branch = master
 [submodule "bridge"]
 	path = bridge
-	url = https://gitlab.com/vainglorygame/bridge.git
-        branch = release/2.14.0
+	url = https://github.com/vainglorygame/bridge
+        branch = master
 [submodule "orm"]
 	path = orm
-	url = https://gitlab.com/vainglorygame/orm.git
-        branch = release/2.14.0
+	url = https://github.com/vainglorygame/orm
+        branch = master
 [submodule "telesucker"]
 	path = telesucker
-	url = https://gitlab.com/vainglorygame/telesucker.git
-        branch = release/2.14.0
+	url = https://github.com/vainglorygame/telesucker
+        branch = master
 [submodule "shrinker"]
 	path = shrinker
-	url = https://gitlab.com/vainglorygame/shrinker.git
-        branch = release/2.14.0
+	url = https://gitub.com/vainglorygame/shrinker
+        branch = master
