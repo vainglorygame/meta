@@ -1,0 +1,333 @@
+apps:
+  - name: bridge
+    cwd: bridge
+    script: server.js
+    instances: 1
+    merge_logs: true
+    env:
+      NODE_ENV: production
+      MADGLORY_TOKEN: GET_YOUR_OWN_TOKEN
+      DATABASE_URI: mysql://local:local@127.0.0.1/vainsocial_web
+      DATABASE_TOURNAMENT_URI: mysql://local:local@127.0.0.1/vainsocial_tournament
+      DATABASE_BRAWL_URI: mysql://local:local@127.0.0.1/vainsocial_brawls
+      BRAWL: true
+      TOURNAMENT: true
+      PLAYER_PROCESS_QUEUE: process
+      GRAB_QUEUE: grab
+      GRAB_TOURNAMENT_QUEUE: grab_tournament
+      GRAB_BRAWL_QUEUE: grab_brawl
+      ANALYZE_QUEUE: analyze
+      ANALYZE_TOURNAMENT_QUEUE: analyze_tournament
+      ANALYZE_BRAWL_QUEUE: analyze_brawl
+      CRUNCH_QUEUE: crunch_global
+      CRUNCH_PLAYER_QUEUE: crunch_player
+      CRUNCH_TOURNAMENT_QUEUE: crunch_global_tournament
+      CRUNCH_BRAWL_QUEUE: crunch_global_brawl
+      SAMPLE_QUEUE: telesuck
+      SAMPLE_TOURNAMENT_QUEUE: telesuck_tournament
+      SAMPLE_BRAWL_QUEUE: telesuck_brawl
+      SHOVEL_SIZE: 50000
+      RABBITMQ_URI: amqp://bridge:bridge@localhost/
+      LOGGLY_TOKEN: 8496f7e8-017c-4ff5-a61e-c2b295825083
+      REGIONS: na,eu,sg,sa,ea,cn
+  - name: apigrabber
+    cwd: apigrabber
+    script: worker.js
+    merge_logs: true
+    instances: 1
+    env:
+      NODE_ENV: production
+      MADGLORY_TOKEN: GET_YOUR_OWN_TOKEN
+      RABBITMQ_URI: amqp://apigrabber:apigrabber@localhost/
+      LOGGLY_TOKEN: 8496f7e8-017c-4ff5-a61e-c2b295825083
+      GRABBERS: 2
+      QUEUE: grab
+      PROCESS_QUEUE: process
+      SAMPLE_QUEUE: telesuck
+  - name: apigrabber_tournament
+    cwd: apigrabber
+    script: worker.js
+    merge_logs: true
+    instances: 1
+    env:
+      NODE_ENV: production
+      MADGLORY_TOKEN: GET_YOUR_OWN_TOKEN
+      RABBITMQ_URI: amqp://apigrabber:apigrabber@localhost/
+      LOGGLY_TOKEN: 8496f7e8-017c-4ff5-a61e-c2b295825083
+      GRABBERS: 1
+      QUEUE: grab_tournament
+      PROCESS_QUEUE: process_tournament
+      SAMPLE_QUEUE: telesuck_tournament
+  - name: apigrabber_brawl
+    cwd: apigrabber
+    script: worker.js
+    merge_logs: true
+    instances: 1
+    env:
+      NODE_ENV: production
+      MADGLORY_TOKEN: GET_YOUR_OWN_TOKEN
+      RABBITMQ_URI: amqp://apigrabber:apigrabber@localhost/
+      LOGGLY_TOKEN: 8496f7e8-017c-4ff5-a61e-c2b295825083
+      GRABBERS: 1
+      QUEUE: grab_brawl
+      PROCESS_QUEUE: process_brawl
+      SAMPLE_QUEUE: telesuck_brawl
+  - name: telesucker
+    cwd: telesucker
+    script: worker.js
+    merge_logs: true
+    instances: 1
+    env:
+      NODE_ENV: production
+      RABBITMQ_URI: amqp://sampler:sampler@localhost/
+      LOGGLY_TOKEN: 8496f7e8-017c-4ff5-a61e-c2b295825083
+      QUEUE: telesuck
+      PROCESS_QUEUE: shrink
+  - name: telesucker_tournament
+    cwd: telesucker
+    script: worker.js
+    merge_logs: true
+    instances: 1
+    env:
+      NODE_ENV: production
+      RABBITMQ_URI: amqp://sampler:sampler@localhost/
+      LOGGLY_TOKEN: 8496f7e8-017c-4ff5-a61e-c2b295825083
+      QUEUE: telesuck_tournament
+      PROCESS_QUEUE: shrink_tournament
+  - name: telesucker_brawl
+    cwd: telesucker
+    script: worker.js
+    merge_logs: true
+    instances: 1
+    env:
+      NODE_ENV: production
+      RABBITMQ_URI: amqp://sampler:sampler@localhost/
+      LOGGLY_TOKEN: 8496f7e8-017c-4ff5-a61e-c2b295825083
+      QUEUE: telesuck_brawl
+      PROCESS_QUEUE: shrink_brawl
+  - name: processor
+    cwd: processor
+    script: worker.js
+    instances: 1
+    merge_logs: true
+    env:
+      NODE_ENV: production
+      DATABASE_URI: mysql://local:local@127.0.0.1/vainsocial_web
+      RABBITMQ_URI: amqp://processor:processor@localhost/
+      LOGGLY_TOKEN: 8496f7e8-017c-4ff5-a61e-c2b295825083
+      QUEUE: process
+      ANALYZE_QUEUE: analyze
+      DOANALYZEMATCH: true
+      BATCHSIZE: 150
+      CHUNKSIZE: 50
+      MAXCONNS: 10
+      LOAD_TIMEOUT: 4000
+      IDLE_TIMEOUT: 600
+  - name: processor_tournament
+    cwd: processor
+    script: worker.js
+    instances: 1
+    merge_logs: true
+    env:
+      NODE_ENV: production
+      DATABASE_URI: mysql://local:local@127.0.0.1/vainsocial_tournament
+      RABBITMQ_URI: amqp://processor:processor@localhost/
+      LOGGLY_TOKEN: 8496f7e8-017c-4ff5-a61e-c2b295825083
+      QUEUE: process_tournament
+      ANALYZE_QUEUE: analyze_tournament
+      DOANALYZEMATCH: true
+      BATCHSIZE: 51
+      CHUNKSIZE: 30
+      MAXCONNS: 5
+      LOAD_TIMEOUT: 4000
+      IDLE_TIMEOUT: 600
+  - name: processor_brawl
+    cwd: processor
+    script: worker.js
+    instances: 1
+    merge_logs: true
+    env:
+      NODE_ENV: production
+      DATABASE_URI: mysql://local:local@127.0.0.1/vainsocial_brawls
+      RABBITMQ_URI: amqp://processor:processor@localhost/
+      LOGGLY_TOKEN: 8496f7e8-017c-4ff5-a61e-c2b295825083
+      QUEUE: process_brawl
+      ANALYZE_QUEUE: analyze_brawl
+      DOANALYZEMATCH: true
+      BATCHSIZE: 51
+      CHUNKSIZE: 30
+      MAXCONNS: 5
+      LOAD_TIMEOUT: 4000
+      IDLE_TIMEOUT: 600  
+  - name: shrinker
+    cwd: shrinker
+    script: worker.js
+    instances: 1
+    merge_logs: true
+    env:
+      NODE_ENV: production
+      DATABASE_URI: mysql://local:local@127.0.0.1/vainsocial_web
+      RABBITMQ_URI: amqp://processor:processor@localhost/
+      LOGGLY_TOKEN: 8496f7e8-017c-4ff5-a61e-c2b295825083
+      QUEUE: shrink
+  - name: shrinker_tournament
+    cwd: shrinker
+    script: worker.js
+    instances: 1
+    merge_logs: true
+    env:
+      NODE_ENV: production
+      DATABASE_URI: mysql://local:local@127.0.0.1/vainsocial_tournament
+      RABBITMQ_URI: amqp://processor:processor@localhost/
+      LOGGLY_TOKEN: 8496f7e8-017c-4ff5-a61e-c2b295825083
+      QUEUE: shrink_tournament
+  - name: shrinker_brawl
+    cwd: shrinker
+    script: worker.js
+    instances: 1
+    merge_logs: true
+    env:
+      NODE_ENV: production
+      DATABASE_URI: mysql://local:local@127.0.0.1/vainsocial_brawls
+      RABBITMQ_URI: amqp://processor:processor@localhost/
+      LOGGLY_TOKEN: 8496f7e8-017c-4ff5-a61e-c2b295825083
+      QUEUE: shrink_brawl
+  - name: cruncher_global
+    cwd: cruncher
+    script: worker.js
+    instances: 1
+    merge_logs: true
+    env:
+      NODE_ENV: production
+      DATABASE_URI: mysql://local:local@127.0.0.1/vainsocial_web
+      RABBITMQ_URI: amqp://cruncher:cruncher@localhost/
+      LOGGLY_TOKEN: 8496f7e8-017c-4ff5-a61e-c2b295825083
+      MAXCONNS: 1
+      BATCHSIZE: 20
+      LOAD_TIMEOUT: 10
+      SLOWMODE: 0
+      QUEUE: crunch
+      SCRIPT: crunch_global.sql
+  - name: cruncher_player
+    cwd: cruncher
+    script: worker.js
+    instances: 1
+    merge_logs: true
+    env:
+      NODE_ENV: production
+      DATABASE_URI: mysql://local:local@127.0.0.1/vainsocial_web
+      RABBITMQ_URI: amqp://cruncher:cruncher@localhost/
+      LOGGLY_TOKEN: 8496f7e8-017c-4ff5-a61e-c2b295825083
+      MAXCONNS: 1
+      BATCHSIZE: 20
+      LOAD_TIMEOUT: 10
+      SLOWMODE: 0
+      QUEUE: crunch_player
+      SCRIPT: crunch_player.sql
+  - name: cruncher_global_tournament
+    cwd: cruncher
+    script: worker.js
+    instances: 1
+    merge_logs: true
+    env:
+      NODE_ENV: production
+      DATABASE_URI: mysql://local:local@127.0.0.1/vainsocial_tournament
+      RABBITMQ_URI: amqp://cruncher:cruncher@localhost/
+      LOGGLY_TOKEN: 8496f7e8-017c-4ff5-a61e-c2b295825083
+      MAXCONNS: 1
+      BATCHSIZE: 20
+      LOAD_TIMEOUT: 10
+      SLOWMODE: 0
+      QUEUE: crunch_tournament
+      SCRIPT: crunch_player.sql
+  - name: cruncher_global_brawl
+    cwd: cruncher
+    script: worker.js
+    instances: 1
+    merge_logs: true
+    env:
+      NODE_ENV: production
+      DATABASE_URI: mysql://local:local@127.0.0.1/vainsocial_brawls
+      RABBITMQ_URI: amqp://cruncher:cruncher@localhost/
+      LOGGLY_TOKEN: 8496f7e8-017c-4ff5-a61e-c2b295825083
+      MAXCONNS: 1
+      BATCHSIZE: 20
+      LOAD_TIMEOUT: 10
+      SLOWMODE: 0
+      QUEUE: crunch_brawl
+      SCRIPT: crunch_player.sql
+  - name: cruncher_player_tournament
+    cwd: cruncher
+    script: worker.js
+    instances: 1
+    merge_logs: true
+    env:
+      NODE_ENV: production
+      DATABASE_URI: mysql://local:local@127.0.0.1/vainsocial_tournament
+      RABBITMQ_URI: amqp://cruncher:cruncher@localhost/
+      LOGGLY_TOKEN: 8496f7e8-017c-4ff5-a61e-c2b295825083
+      MAXCONNS: 1
+      BATCHSIZE: 20
+      LOAD_TIMEOUT: 10
+      SLOWMODE: 0
+      QUEUE: crunch_player_tournament
+      SCRIPT: crunch_player.sql
+  - name: cruncher_player_brawl
+    cwd: cruncher
+    script: worker.js
+    instances: 1
+    merge_logs: true
+    env:
+      NODE_ENV: production
+      DATABASE_URI: mysql://local:local@127.0.0.1/vainsocial_brawls
+      RABBITMQ_URI: amqp://cruncher:cruncher@localhost/
+      LOGGLY_TOKEN: 8496f7e8-017c-4ff5-a61e-c2b295825083
+      MAXCONNS: 1
+      BATCHSIZE: 20
+      LOAD_TIMEOUT: 10
+      SLOWMODE: 0
+      QUEUE: crunch_player_brawl
+      SCRIPT: crunch_player.sql
+  - name: analyzer
+    cwd: analyzer
+    script: worker.py
+    interpreter: /Users/kvahuja/projects/github/vainglorygame/Environments/myenv/bin/python3
+    interpreter_args: -u
+    merge_logs: true
+    env:
+      DATABASE_URI: mysql+pymysql://local:local@127.0.0.1/vainsocial_web
+      RABBITMQ_URI: amqp://analyzer:analyzer@localhost/
+      BATCHSIZE: 500
+      CHUNKSIZE: 100
+      QUEUE: analyze
+  - name: analyzer_tournament
+    cwd: analyzer
+    script: worker.py
+    interpreter: /Users/kvahuja/projects/github/vainglorygame/Environments/myenv/bin/python3
+    interpreter_args: -u
+    merge_logs: true
+    env:
+      DATABASE_URI: mysql+pymysql://local:local@127.0.0.1/vainsocial_tournament
+      RABBITMQ_URI: amqp://analyzer:analyzer@localhost/
+      BATCHSIZE: 500
+      CHUNKSIZE: 100
+      QUEUE: analyze_tournament
+  - name: analyzer_brawl
+    cwd: analyzer
+    script: worker.py
+    interpreter: /Users/kvahuja/projects/github/vainglorygame/Environments/myenv/bin/python3
+    interpreter_args: -u
+    merge_logs: true
+    env:
+      DATABASE_URI: mysql+pymysql://local:local@127.0.0.1/vainsocial_brawls
+      RABBITMQ_URI: amqp://analyzer:analyzer@localhost/
+      BATCHSIZE: 500
+      CHUNKSIZE: 100
+      QUEUE: analyze_brawl
+  - name: status
+    cwd: status
+    script: server.js
+    instances: 1
+    merge_logs: true
+    env:
+      NODE_ENV: production

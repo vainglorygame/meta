@@ -1,0 +1,128 @@
+apps:
+  - name: bridge
+    cwd: bridge
+    script: server.js
+    instances: 1
+    merge_logs: true
+    env:
+      MADGLORY_TOKEN:
+      DATABASE_URI: mysql://vain:vain@localhost/vainweb
+      DATABASE_TOURNAMENT_URI: mysql://vain:vain@localhost/vaintournament
+      RABBITMQ_URI: amqp://guest:guest@localhost/
+      BRAWL: false
+      TOURNAMENT: false
+      GRABSTART: "2017-08-01T00:00:00Z"
+  - name: apigrabber
+    cwd: apigrabber
+    script: worker.js
+    merge_logs: true
+    instances: 1
+    env:
+      MADGLORY_TOKEN:
+      RABBITMQ_URI: amqp://guest:guest@localhost/
+  - name: telesucker
+    cwd: telesucker
+    script: worker.js
+    merge_logs: true
+    instances: 1
+    env:
+      RABBITMQ_URI: amqp://guest:guest@localhost/
+  - name: processor
+    cwd: processor
+    script: worker.js
+    instances: 1
+    merge_logs: true
+    env:
+      DATABASE_URI: mysql://vain:vain@localhost/vainweb
+      RABBITMQ_URI: amqp://guest:guest@localhost/
+      DOANALYZEMATCH: true
+  - name: shrinker
+    cwd: shrinker
+    script: worker.js
+    instances: 1
+    merge_logs: true
+    env:
+      DATABASE_URI: mysql://vain:vain@localhost/vainweb
+      RABBITMQ_URI: amqp://guest:guest@localhost/
+      DOREAPMATCH: false
+  - name: cruncher_global
+    cwd: cruncher
+    script: worker.js
+    instances: 1
+    merge_logs: true
+    env:
+      DATABASE_URI: mysql://vain:vain@localhost/vainweb
+      RABBITMQ_URI: amqp://guest:guest@localhost/
+      MAXCONNS: 1
+      BATCHSIZE: 20
+      SLOWMODE: 0
+      QUEUE: crunch_global
+      SCRIPT: crunch_global.sql
+  - name: cruncher_herovshero
+    cwd: cruncher
+    script: worker.js
+    instances: 1
+    merge_logs: true
+    env:
+      DATABASE_URI: mysql://vain:vain@localhost/vainweb
+      RABBITMQ_URI: amqp://guest:guest@localhost/
+      MAXCONNS: 1
+      BATCHSIZE: 20
+      SLOWMODE: 0
+      QUEUE: crunch_herovshero
+      SCRIPT: crunch_hero_vs_hero.sql
+  - name: cruncher_player
+    cwd: cruncher
+    script: worker.js
+    instances: 1
+    merge_logs: true
+    env:
+      DATABASE_URI: mysql://vain:vain@localhost/vainweb
+      RABBITMQ_URI: amqp://guest:guest@localhost/
+      MAXCONNS: 1
+      BATCHSIZE: 20
+      LOAD_TIMEOUT: 10
+      SLOWMODE: 0
+      QUEUE: crunch_player
+      SCRIPT: crunch_player.sql
+  - name: cruncher_bans
+    cwd: cruncher
+    script: worker.js
+    instances: 1
+    merge_logs: true
+    env:
+      DATABASE_URI: mysql://vain:vain@localhost/vainweb
+      RABBITMQ_URI: amqp://guest:guest@localhost/
+      MAXCONNS: 1
+      BATCHSIZE: 5
+      LOAD_TIMEOUT: 10
+      SLOWMODE: 0
+      QUEUE: crunch_ban
+      SCRIPT: crunch_phases_bans.sql
+  - name: cruncher_phases
+    cwd: cruncher
+    script: worker.js
+    instances: 1
+    merge_logs: true
+    env:
+      DATABASE_URI: mysql://vain:vain@localhost/vainweb
+      RABBITMQ_URI: amqp://guest:guest@localhost/
+      MAXCONNS: 1
+      BATCHSIZE: 5
+      LOAD_TIMEOUT: 10
+      SLOWMODE: 0
+      QUEUE: crunch_phase
+      SCRIPT: crunch_phases.sql
+  - name: analyzer
+    cwd: analyzer
+    script: worker.py
+    interpreter: venv/bin/python
+    interpreter_args: -u
+    merge_logs: true
+    env:
+      DATABASE_URI: mysql+cymysql://vain:vain@localhost/vainweb
+      RABBITMQ_URI: amqp://guest:guest@localhost/
+      BATCHSIZE: 500
+      CHUNKSIZE: 100
+      DOTELESUCKMATCH: false
+      DOCRUNCHPLAYER: true
